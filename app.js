@@ -4,6 +4,15 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const sassMiddleware = require('node-sass-middleware')
+const sequelize = require('db.js');
+
+sequelize.authenticate().then(() => {
+  console.log('Connection has been established successfully.');
+})
+.catch(err => {
+  console.error('Unable to connect to the database:', err);
+});
+
 
 const indexRouter = require('./routes/index')
 // const usersRouter = require('./routes/users')
